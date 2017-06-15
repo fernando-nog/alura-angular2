@@ -13,6 +13,15 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var AppComponent = (function () {
     function AppComponent(http) {
+        var _this = this;
+        this.fotos = [];
+        http
+            .get('v1/fotos')
+            .map(function (res) { return res.json(); })
+            .subscribe(function (fotos) {
+            _this.fotos = fotos;
+            console.log(fotos);
+        }, function (erro) { return console.log(erro); });
     }
     return AppComponent;
 }());
